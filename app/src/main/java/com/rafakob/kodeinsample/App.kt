@@ -10,6 +10,11 @@ class App : Application(), KodeinAware {
     override val kodein by Kodein.lazy {
         import(autoAndroidModule(this@App))
 
-        bind<MainPresenter>() with scopedSingleton(androidActivityScope) { MainPresenter() }
+        bind<MainPresenter>() with autoScopedSingleton(androidActivityScope) { MainPresenter() }
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        registerActivityLifecycleCallbacks(androidActivityScope.lifecycleManager)
     }
 }

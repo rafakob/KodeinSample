@@ -6,7 +6,7 @@ import com.rafakob.kodeinsample.R
 import com.rafakob.kodeinsample.core.MvpActivity
 
 class MainActivity : MvpActivity<MainPresenter, MainView>() {
-    val presenter: MainPresenter by instance()
+    val presenter: MainPresenter by kodein.instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
